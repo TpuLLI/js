@@ -2,7 +2,7 @@ var questions = [
   {
     question: 'Cycle:',
     answers: ['for', 'var', 'while/do whil', 'typeof', 'function'],
-    correct_answer: [0, 3],
+    correct_answer: ['correct', 'incorrect', 'correct', 'incorrect', 'incorrect'],
     position: 0
   },
    {
@@ -72,14 +72,12 @@ var questions = [
 function validate_form() {
   valid = true;
   if(document.contact_form.login.value == '') {
-      // alert ('Pleas, enter your name!');
       var errorName = document.getElementById('error_name');
       errorName.style.display = 'block';
       valid = false;
   }
   if(document.contact_form.pass.value == '') {
     var errorPass = document.getElementById('error_pass');
-    // console.log(errorPass);
     errorPass.style.display = 'block';
     valid = false;
   }
@@ -114,12 +112,39 @@ submit.addEventListener('click', function(event) {
   event.preventDefault();
   if (!validate_form()) {
   wrapper.removeChild(form);
-  renderPos(7);
+  renderPos(0);
   }
 });
 
+
 function finishTest() {
-  console.log('finishTest');
+  wrapper.removeChild(question_wrapper);
+  wrapper.innerHTML += '<div id="all"></div>';
+  var all = document.getElementById('all');
+  for (var index in questions) {
+    all.innerHTML += '<div id="question">\
+                      <div id="question_title">' + questions[index].question + '</div>\
+                      <div id="question_answers' + index + '"></div>\
+                      </div>\
+    ';
+    var question_answers = document.getElementById('question_answers' +  index);
+    for (var i in questions[index].answers) {
+      var correctAnswerAr = questions[index].correct_answer
+      var userAnswerAr = questions[index].user_answers
+      if (userAnswerAr[i] == 'setted' && correctAnswerAr[i] == 'correct') {
+        question_answers.innerHTML += '<div class="correct">!!!!!' + questions[index].answers[i] + '</div>';
+      }
+      else if (userAnswerAr[i] == 'setted' && correctAnswerAr[i] == 'incorrect') {
+        question_answers.innerHTML += '<div class="incorrect">!!!!!' + questions[index].answers[i] + '</div>';
+      }
+      else if (userAnswerAr[i] == 'notsetted' && correctAnswerAr[i] == 'correct') {
+        question_answers.innerHTML += '<div class="correct">' + questions[index].answers[i] + '</div>';
+      }
+      else if (userAnswerAr[i] == 'notsetted' && correctAnswerAr[i] == 'incorrect') {
+        question_answers.innerHTML += '<div class="grey">' + questions[index].answers[i] + '</div>';
+      }
+    }
+  }
 }
 
 function renderPos(position) {
@@ -167,10 +192,10 @@ function renderPos(position) {
 
     for (var i = 0; i < checkboxArr.length; i++) {
       if (checkboxArr[i].checked == true) {
-        q.user_answers.push(true);
+        q.user_answers.push('setted');
       }
       else {
-        q.user_answers.push(false);
+        q.user_answers.push('notsetted');
       }
     }
 

@@ -79,4 +79,18 @@ body {
   margin-left: 320px;
 }
 
+#all_question {
+  background-color:  red;
+}
 
+.correct {
+  background-color: green;
+}
+
+.incorrect {
+  background-color: red;
+}
+
+.grey {
+  background-color: grey;
+}
