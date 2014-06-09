@@ -1,0 +1,82 @@
+body {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  width: 500px;
+  margin: 100px auto;
+}
+
+#login,
+#pass,
+#submit {
+  height: 30px;
+  width: 250px;
+  margin-left: 50px;
+  margin-top: 30px;
+  border: 2px solid #000;
+  background-color: #d0e2f2;
+}
+
+.login label {
+  margin-left: 25px;
+}
+
+#submit {
+  width: 150px;
+  height: 30px;
+  margin-left: 255px;
+}
+
+#error_name,
+#error_pass {
+  display: none;
+  color: red;
+}
+
+#question_wrapper {
+  width: 500px;
+  background-color: #20B2AA;
+}
+
+#question {
+  font-size: 22px;
+  font-weight: 600;
+  background-color: #4682B4;
+}
+
+#answer {
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0 0 20px 20px;
+}
+
+#answer input {
+  margin-right: 20px;
+}
+
+#buttons {
+  border-top: 2px solid #fff;
+}
+
+#buttons a {
+  height: 50px;
+  width: 100px;
+  text-decoration: none;
+}
+
+#previous {
+  margin-left: 20px;
+}
+
+#previous.disabled {
+  color: grey;
+  cursor: default;
+}
+
+#next {
+  margin-left: 320px;
+}
+
+

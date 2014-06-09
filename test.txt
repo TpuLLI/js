@@ -1,0 +1,76 @@
+1. Циклы:
+
+for   +
+var
+while/do whil  +
+typeof
+function
+
+
+
+2. (function(){
+    return typeof arguments;
+  })();
+
+ "object"    +
+ "array"
+ "arguments"
+ "undefined"
+
+3. var f = function g(){ return 23; };
+  typeof g();
+
+ "number"
+ "undefined"
+ "function"
+ Error     +
+
+4. (function(x){
+    delete x;
+    return x;
+  })(1);
+
+ 1           +
+ null
+ undefined
+ Error
+
+5.  var y = 1, x = y = typeof x;
+  x;
+
+ 1
+ "number"
+ undefined   
+ "undefined"  +
+
+6. (function f(f){
+    return typeof f();
+  })(function(){ return 1; });
+
+ "number"     +
+ "undefined"
+ "function"
+ Error
+
+7. var f = (function f(){ return "1"; }, function g(){ return 2; })();
+  typeof f;
+
+ "string"
+ "number"  +
+ "function"
+ "undefined"
+
+
+8.   (function f(){
+    function f(){ return 1; }
+    return f();
+    function f(){ return 2; }
+  })();
+
+ 1
+ 2    +
+ Error (e.g. "Too much recursion")
+ undefined
+
+
+
